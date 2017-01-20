@@ -23,3 +23,5 @@
 .idea/
 
 spring/
+
+Gemfile.lock
