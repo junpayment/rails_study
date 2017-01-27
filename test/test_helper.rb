@@ -9,5 +9,8 @@ class ActiveSupport::TestCase
   fixtures :all
   include ApplicationHelper
 
-  # Add more helper methods to be used by all tests here...
+  def is_logged_in?
+    # ここではApplicationHelper::logged_in?で@userの有無で判断せずにsessionの有無でログイン状態を判断
+    !session[:user_id].nil?
+  end
 end
