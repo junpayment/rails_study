@@ -4,6 +4,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:michael)
     @other_user = users(:archer)
+    @noactivated_user = users(:noactivated)
   end
 
   test "should redirect index when not logged in" do
@@ -67,5 +68,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       delete user_path(@user)
     end
     assert_redirected_to root_url
+  end
+
+  test "should display only activated users" do
+    log_in_as(@user)
+
+    get user_path(@noactivated_user)
+    assert_redirected_to root_url
+
+    page_count = User.where(activated: true).paginate(page:1).total_pages
+    get users_path(page: page_count)
+    assert_select "a[href=?]", user_path(@noactivated_user), count: 0
   end
 end
