@@ -25,3 +25,5 @@
 spring/
 
 #Gemfile.lock
+
+/public/uploads
