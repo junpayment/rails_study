@@ -2,7 +2,7 @@
 # Set the working application directory
 # working_directory '/path/to/your/app'
 
-working_directory '/home/nomura/sample_app'
+working_directory '/home/nomura/rails_test'
 
 # Unicorn PID file location
 # pid '/path/to/pids/unicorn.pid'
